@@ -1,0 +1,1587 @@
+/* Reset og base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f9f9f9;
+    color: #222;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+  }/* Google Font */
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #222;
+    background-color: #eef3f8;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+  
+  /* Main layout */
+  main {
+    flex: 1;
+    padding: 2rem;
+    background: #419bf6;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2.5rem;
+    height: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+  }
+  
+  /* Seksjoner */
+  section {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    max-width: 900px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* Seksjons-titler */
+  section h2 {
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  
+  /* Inputs & buttons */
+  input,
+  button {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ccd6e0;
+    font-size: 1.1rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+  }
+  
+  /* Input felt */
+  input {
+    background-color: #f7f9fb;
+    color: #333;
+  }
+  
+  input:focus {
+    border-color: #1a73e8;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+  }
+  
+  /* Telefonnummer input (+47) spesial */
+  input[type="tel"] {
+    padding-left: 3rem; /* Litt ekstra plass for landkode */
+    background-image: url('https://flagcdn.com/w40/no.png');
+    background-position: 0.5rem center;
+    background-size: 24px;
+    background-repeat: no-repeat;
+  }
+  
+  /* Knappene */
+  button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  button:hover {
+    background-color: #155ab3;
+  }
+  
+  /* Responsiv */
+  @media screen and (max-width: 768px) {
+    main {
+      padding: 1.5rem;
+      gap: 2rem;
+    }
+  
+    section {
+      padding: 1.5rem;
+      max-width: 100%;
+    }
+  
+    input,
+    button {
+      padding: 0.9rem;
+    }
+  
+    section h2 {
+      font-size: 1.6rem;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  /* Fullscreen Overlay */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #132743, #1e3c72);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 10000;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  /* Wizard Box */
+  .wizard-content {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: slideFadeIn 0.6s ease-out;
+  }
+  
+  /* Entrance animation */
+  @keyframes slideFadeIn {
+    from {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Lottie animation block */
+  .lottie {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1.2rem;
+  }
+  
+  /* Norwegian flag image */
+  .wizard-content img {
+    width: 180px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 1.2rem;
+  }
+  
+  /* Header text */
+  .wizard-content h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #102a43;
+  }
+  
+  /* Subtext */
+  .wizard-content p {
+    font-size: 1.1rem;
+    color: #334e68;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+  
+  /* Primary button */
+  #wizard button {
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(to right, #0077ff, #0050c2);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  #wizard button:hover {
+    background: linear-gradient(to right, #0050c2, #003a91);
+    transform: scale(1.03);
+  }
+  
+  /* Hide when inactive */
+  .overlay:not(.active) {
+    display: none;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+    .wizard-content {
+      padding: 2rem 1.5rem;
+    }
+  
+    .wizard-content h2 {
+      font-size: 1.5rem;
+    }
+  
+    .wizard-content p {
+      font-size: 1rem;
+    }
+  
+    #wizard button {
+      width: 100%;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+/* Header Container */
+header {
+    background: linear-gradient(90deg, #003d7a, #0051a3); /* Mer dynamisk farge */
+    color: white;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 12px 12px;
+    position: relative;
+  }
+  
+  /* Center title perfectly */
+  header h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  
+  /* Controls group */
+  .header-controls {
+    display: flex;
+    gap: 0.6rem;
+    z-index: 1; /* So it doesn't overlap title */
+  }
+  
+  /* Header Buttons */
+  .header-controls button {
+    background: #ffffff;
+    color: #0051a3;
+    border: none;
+    padding: 0.5rem 0.9rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-controls button:hover {
+    background: #e0eaff;
+    transform: translateY(-2px);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    header {
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+    }
+  
+    .header-controls {
+      margin-top: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  
+    header h1 {
+      position: static;
+      transform: none;
+      margin-bottom: 0.5rem;
+    }
+  }
+  @keyframes glow {
+    0%, 100% {
+      text-shadow: none;
+    }
+    25% {
+      text-shadow:
+        0 0 10px #99ccff,
+        0 0 20px #66b2ff,
+        0 0 30px #3399ff;
+    }
+    50% {
+      text-shadow:
+        0 0 15px #cce6ff,
+        0 0 30px #66ccff,
+        0 0 45px #3399ff;
+    }
+    75% {
+      text-shadow:
+        0 0 10px #99ccff,
+        0 0 20px #66b2ff,
+        0 0 30px #3399ff;
+    }
+  }
+  
+  header h1 {
+    animation: glow 3s ease-in-out infinite;
+  }
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  /* Chatbot container */
+  .chatbot {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 380px;
+    max-height: 600px;
+    background: #f8fbff;
+    border: 2px solid #0051a3;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 81, 163, 0.25);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  /* Hide when inactive */
+  .chatbot.hidden {
+    display: none;
+  }
+  
+  /* Chat log */
+  #chatLog {
+    flex: 1;
+    padding: 1.25rem;
+    overflow-y: auto;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #002b5c;
+    background: #ffffff;
+  }
+  
+  /* Chat input container */
+  .chat-input {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-top: 1px solid #b3d1ff;
+    background: #e9f2ff;
+  }
+  
+  /* Chat input field */
+  .chat-input input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: 1px solid #99c2ff;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: white;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  
+  .chat-input input:focus {
+    border-color: #0051a3;
+  }
+  
+  /* Chat send button */
+  #chatSend {
+    background: #0051a3;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0.7rem 1.1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  #chatSend:hover {
+    background: #003f7f;
+    transform: scale(1.05);
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Stepper */
+.stepper {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem auto;
+    padding: 0.75rem 1.25rem;
+    background: #f0f4ff;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 81, 163, 0.1);
+    max-width: 900px;
+    flex-wrap: wrap;
+    transition: background 0.3s ease;
+  }
+  
+  .step {
+    flex: 1 1 130px;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10px;
+    background: white;
+    border: 2px solid transparent;
+    color: #0051a3;
+    font-weight: 500;
+    transition: all 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    user-select: none;
+    opacity: 0.95;
+  }
+  
+  .step:hover {
+    background: #e6efff;
+    border-color: #0051a3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    opacity: 1;
+  }
+  
+  .step.active {
+    background: linear-gradient(135deg, #0051a3, #0073e6);
+    color: white;
+    border-color: #0051a3;
+    font-weight: 700;
+    transform: scale(1.07);
+    box-shadow: 0 8px 16px rgba(0, 81, 163, 0.2);
+    opacity: 1;
+  }
+  
+  /* Responsiv */
+  @media (max-width: 600px) {
+    .step {
+      flex: 1 1 100%;
+      font-size: 0.9em;
+    }
+  }
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+/* Error tekst */
+.error {
+    color: #d93025;
+    font-size: 0.9rem;
+    margin: 0.2rem 0 1rem;
+    display: none; /* Skjult som standard */
+  }
+  
+  /* Viser error */
+  input.error-field {
+    border-color: #d93025;
+    background-color: #fce8e6;
+  }
+  
+  /* OTP valg */
+  .otp-methods {
+    display: flex;
+    gap: 0.8rem;
+    margin: 1rem 0;
+  }
+  
+  .otp-method input[type="radio"] {
+    display: none;
+  }
+  
+  .otp-method label {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background: #f7f7f7;
+    color: #555;
+    font-size: 1rem;
+    transition: background 0.3s, border-color 0.3s, color 0.3s, transform 0.2s;
+    user-select: none;
+  }
+  
+  .otp-method label:hover {
+    background: #e9f0fb;
+    border-color: #007bff;
+    transform: scale(1.03);
+  }
+  
+  .otp-method input[type="radio"]:checked + label {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+  
+  /* File input som "knapp" */
+  #passportUpload {
+    display: none;
+  }
+  
+  .file-label {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    background-color: #f7f7f7;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+    margin-bottom: 1rem;
+  }
+  
+  .file-label:hover {
+    background: #e9f0fb;
+    border-color: #007bff;
+  }
+  
+  .file-label:active {
+    background: #d0e2ff;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* === OTP Seksjon === */
+#otpSection {
+  max-width: 400px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+#otpSection h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color, #0055a5);
+}
+
+#otpInput {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.25rem;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#otpInput:focus {
+  border-color: var(--primary-color, #0055a5);
+  box-shadow: 0 0 0 4px rgba(0, 85, 165, 0.1);
+}
+
+#btnOtp {
+  background-color: var(--primary-color, #0055a5);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#btnOtp:hover {
+  background-color: #003f7d;
+  transform: translateY(-2px);
+}
+
+.error {
+  color: #e63946;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.debug {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 1rem;
+  background: #f1f1f1;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+/* Rød kant ved feil */
+.input-error {
+  border-color: #e63946 !important;
+  box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.1);
+}
+/* Feilmelding */
+.error {
+  color: #e63946;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  display: block;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+/* Skjul hvis tom (valgfritt) */
+.error:empty {
+  opacity: 0;
+}
+
+/* Input som har feil */
+.input-error {
+  border: 2px solid #e63946 !important;
+  background-color: #ffe5e5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==== Face Recognition ==== */
+#faceSection {
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+}
+
+#faceCam {
+  width: 100%;
+  max-width: 300px;
+  border: 4px solid #4caf50;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(76,175,80,0.5);
+  background: black;
+  transition: border 0.3s, box-shadow 0.3s;
+  display: block;
+  position: relative;
+}
+
+#faceCam.ok {
+  border-color: #4caf50;
+  box-shadow: 0 0 15px rgba(76,175,80,0.7);
+}
+
+#faceCam.error {
+  border-color: #e63946;
+  animation: pulse-red 1s infinite alternate;
+}
+
+@keyframes pulse-red {
+  from { box-shadow: 0 0 5px rgba(230,57,70,0.5); }
+  to   { box-shadow: 0 0 20px rgba(230,57,70,1); }
+}
+
+#scannerLine {
+  position: absolute;
+  top: 0; left: 5%;
+  width: 90%; height: 4px;
+  background: rgba(76,175,80,0.8);
+  border-radius: 2px;
+  animation: scan 2s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes scan {
+  0%   { top: 0; }
+  50%  { top: calc(100% - 4px); }
+  100% { top: 0; }
+}
+
+#btnFace {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+#btnFace:hover {
+  transform: scale(1.05);
+}
+
+#btnFace.scanning {
+  background: #ffa000;
+  cursor: wait;
+  animation: glow 1s infinite alternate;
+}
+
+#errorFace {
+  color: #e63946;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.success {
+  color: #4caf50;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==== CAPTCHA: Stylish Slide to Verify ==== */
+#captchaSection {
+  text-align: center;
+  padding: 2rem;
+  background: #f0f4ff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 81, 163, 0.1);
+  max-width: 400px;
+  margin: 2rem auto;
+}
+
+#captchaSection h2 {
+  font-size: 1.6rem;
+  color: #0051a3;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 4px rgba(0,81,163,0.3);
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.slider-container input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  height: 16px;
+  border-radius: 8px;
+  background: linear-gradient(
+    90deg,
+    #4caf50 var(--pct, 0%),
+    #ddd var(--pct, 0%)
+  );
+  outline: none;
+  transition: background 0.2s ease-out;
+}
+
+.slider-container input[type=range]::-webkit-slider-thumb,
+.slider-container input[type=range]::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #4caf50;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.slider-container input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+#sliderPercent {
+  font-size: 1.1rem;
+  width: 48px;
+  text-align: center;
+  color: #0051a3;
+  font-weight: 600;
+}
+
+#errorCaptcha {
+  color: #e63946;
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+}
+
+.success {
+  color: #4caf50;
+}
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  25%     { transform: translateX(-5px); }
+  50%     { transform: translateX(5px); }
+  75%     { transform: translateX(-5px); }
+}
+.shake {
+  animation: shake 0.4s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==== Stemmegivning ==== */
+#voteSection {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+}
+
+#voteSection h2 {
+  font-size: 1.8rem;
+  color: #0051a3;
+  margin-bottom: 1.5rem;
+}
+
+#partySearch {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #ccd6e0;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#partySearch:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 4px rgba(26,115,232,0.2);
+  outline: none;
+}
+
+#partyList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.party-card {
+  position: relative;
+  padding: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+  background: #fafafa;
+}
+
+.party-card:hover {
+  border-color: #0051a3;
+  box-shadow: 0 4px 12px rgba(0,81,163,0.1);
+  transform: translateY(-2px);
+}
+
+.party-card.selected {
+  border-color: #4caf50;
+  background: #e8f5e9;
+}
+
+.party-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.party-card label {
+  display: block;
+  font-size: 1rem;
+  color: #333;
+  user-select: none;
+}
+
+/* Submit-knapp */
+#btnVote {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#btnVote:hover {
+  background: #155ab3;
+  transform: translateY(-2px);
+}
+
+/* Feilmelding */
+#errorVote {
+  color: #e63946;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+.party-card {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 0.5rem;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.party-card:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.party-card.selected {
+  background-color: #e0f7fa;
+  border-color: #00796b;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==== Kvittering (Steg 6) ==== */
+#receiptSection {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+#receiptSection h2 {
+  font-size: 1.8rem;
+  color: #0051a3;
+  margin-bottom: 1rem;
+}
+
+#receiptCode {
+  background: #e8f5e9;
+  border: 2px dashed #4caf50;
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  color: #333;
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin-bottom: 1.5rem;
+}
+
+#btnReceipt {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#btnReceipt:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==== Sanntidsresultater (Steg 7) ==== */
+#resultsSection {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+#resultsSection h2 {
+  font-size: 1.8rem;
+  color: #0051a3;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 4px rgba(0,81,163,0.2);
+}
+
+#resultsSection canvas {
+  width: 100% !important;
+  max-height: 400px;
+  margin-bottom: 1.5rem;
+}
+
+#btnConfetti {
+  background: #f9a825;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#btnConfetti:hover {
+  background: #f57f17;
+  transform: translateY(-2px);
+}
+
+/* ==== Konfetti-canvas ==== */
+.confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==== Security Info ==== */
+#infoSection {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #eef6f9;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+#infoSection h2 {
+  font-size: 1.8rem;
+  color: #0051a3;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#infoSection ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 0;
+}
+
+#infoSection li {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ==== Thank You ==== */
+#thankyouSection {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #e8f5e9;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+#thankyouSection h2 {
+  font-size: 2rem;
+  color: #2e7d32;
+  margin-bottom: 1rem;
+}
+
+#thankyouSection p {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Skjule som standard */
+.hidden {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+/* Mørk modus med forbedret design */
+body.dark {
+    background: #121212;
+    color: #e0e0e0;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Header & Footer */
+  body.dark header,
+  body.dark footer {
+    background: #1f1f1f;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  }
+  
+  /* Inputs & Buttons & Selects */
+  body.dark input,
+  body.dark button,
+  body.dark select {
+    background: #1e1e1e;
+    color: #f5f5f5;
+    border: 1px solid #555;
+    border-radius: 6px;
+    padding: 0.5em;
+    transition: background 0.2s ease, border 0.2s ease;
+  }
+  
+  body.dark input:focus,
+  body.dark button:focus,
+  body.dark select:focus {
+    border-color: #90caf9;
+    outline: none;
+  }
+  
+  /* Steppers */
+  body.dark .step.active {
+    border-color: #64b5f6;
+    background: #1a237e;
+    color: #bbdefb;
+    border-radius: 4px;
+  }
+  
+  /* Chatbot */
+  body.dark .chatbot {
+    background: #1c1c1c;
+    color: #f0f0f0;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 1em;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  }
+  
+  /* Overlay Wizard */
+  body.dark .overlay .wizard-content {
+    background: #2b2b2b;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 2em;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+  }
+  
+  /* Hidden utility class */
+  .hidden {
+    display: none;
+  }
+
+  /* Mørk modus */
+body.dark {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+  
+  /* Main layout */
+  body.dark main {
+    background: #1e1e1e;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Seksjoner */
+  body.dark section {
+    background: #1f1f1f;
+    color: #e0e0e0;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+  }
+  
+  body.dark section h2 {
+    color: #ffffff;
+  }
+  
+  /* Inputs */
+  body.dark input {
+    background-color: #2c2c2c;
+    color: #fff;
+    border: 1px solid #555;
+  }
+  
+  body.dark input:focus {
+    border-color: #64b5f6;
+    box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.2);
+  }
+  
+  /* Knapper */
+  body.dark button {
+    background-color: #64b5f6;
+    color: #000;
+  }
+  
+  body.dark button:hover {
+    background-color: #42a5f5;
+  }
+  
+  /* Placeholder tekst */
+  body.dark input::placeholder {
+    color: #aaa;
+  }  
+  
+  /* Mørk modus støtte */
+  body.dark .stepper {
+    background: #1e2a40;
+  }
+  
+  body.dark .step {
+    background: #273d5f;
+    color: #aecdff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+  
+  body.dark .step:hover {
+    background: #33558a;
+    border-color: #66aaff;
+  }
+  
+  body.dark .step.active {
+    background: linear-gradient(135deg, #66aaff, #3388ff);
+    color: white;
+    border-color: #66aaff;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

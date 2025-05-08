@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Valgsystem 3.0 Ultimate</title>
+  <link rel="stylesheet" href="styles2.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  
+
+  <!-- Libraries -->
+  <script src="https://unpkg.com/lottie-web/build/player/lottie.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- Lottie Welcome Wizard -->
+  <div id="wizard" class="overlay active">
+    <div class="wizard-content">
+      <div id="lottieWelcome" class="lottie"></div>
+      <img src="https://media.snl.no/media/8374/standard_norges_flagg.png" alt="">
+      <h2>Velkommen til Valgsystem 3.0!</h2>
+      <p>Trygg, anonym og moderne stemmegivning.</p>
+      <button id="startWizard">La oss starte!</button>
+    </div>
+  </div>
+
+  <header>
+    <h1>Valgsystem 3.0 Super Edition</h1>
+    <div class="header-controls">
+      <button id="darkToggle" title="Dark Mode">🌙</button>
+      <button id="langToggle" title="Bytt språk">EN/NO</button>
+      <button id="chatToggle" title="Hjelp">💬</button>
+    </div>
+  </header>
+
+  <!-- Chatbot -->
+  <aside id="chatbot" class="chatbot hidden">
+    <div id="chatLog"></div>
+    <div class="chat-input">
+      <input id="chatInput" placeholder="Spør meg om valget..." />
+      <button id="chatSend">Send</button>
+    </div>
+  </aside>
+
+  <main>
+    <!-- Progress Stepper -->
+    <nav class="stepper">
+      <div class="step active" data-step="1">1. ID Verifisering</div>
+      <div class="step" data-step="2">2. OTP</div>
+      <div class="step" data-step="3">3. Ansikt</div>
+      <div class="step" data-step="4">4. CAPTCHA</div>
+      <div class="step" data-step="5">5. Stemmegivning</div>
+      <div class="step" data-step="6">6. Kvittering</div>
+      <div class="step" data-step="7">7. Resultater</div>
+    </nav>
+
+   <!-- ID Verification -->
+<section id="authSection">
+    <h2>1. ID Verifisering</h2>
+  
+    <input id="ssn" placeholder="Personnummer (11 siffer)" maxlength="11" />
+    <p class="error" id="errSSN"></p>
+  
+    <input id="email" placeholder="E-post" type="email" />
+    <p class="error" id="errEmail"></p>
+  
+    <input id="password" placeholder="Passord" type="password" />
+    <p class="error" id="errPassword"></p>
+  
+    <label for="phone">Telefonnummer</label>
+    <input id="phone" name="phone" type="tel" value="+47" maxlength="13" />
+    <p class="error" id="errPhone"></p>
+  
+    <label for="passportUpload" class="file-label">Last opp Pass/ID</label>
+    <input id="passportUpload" type="file" accept="image/*,.pdf" />
+    <p class="error" id="errFile"></p>
+  
+    <label>Hvordan vil du motta engangskoden (OTP)?</label>
+    <div class="otp-methods">
+      <div class="otp-method">
+        <input type="radio" id="otpSms" name="otpMethod" value="sms" checked />
+        <label for="otpSms">SMS</label>
+      </div>
+      <div class="otp-method">
+        <input type="radio" id="otpEmail" name="otpMethod" value="email" />
+        <label for="otpEmail">E-post</label>
+      </div>
+    </div>
+  
+    <button id="btnAuth">Verifiser ID</button>
+    <p id="errAuth" class="error"></p>
+  </section>
+  
+  
+
+
+    <!-- OTP -->
+    <section id="otpSection" class="hidden">
+      <h2>2. Engangskode (OTP)</h2>
+      <input id="otpInput" placeholder="6-sifret kode" maxlength="6" />
+      <button id="btnOtp">Verifiser kode</button>
+      <p id="errOtp" class="error"></p>
+      <div id="debugOtp" class="debug">Testkode: <span id="otpCode"></span></div>
+    </section>
+
+    <!-- Face Recognition -->
+    <section id="faceSection" class="hidden">
+      <h2>3. Ansiktsgjenkjenning</h2>
+      <video id="faceCam" autoplay></video>
+      <button id="btnFace">Bekreft ansikt</button>
+      <p id="errFace" class="error"></p>
+    </section>
+
+   
+<!-- CAPTCHA (Slide to Verify) -->
+<section id="captchaSection" class="hidden">
+  <h2>4. Bekreft at du ikke er en robot</h2>
+  <div class="slider-container">
+    <input type="range" id="captchaSlider" min="0" max="100" value="0">
+  </div>
+  <p id="sliderPercent">0%</p>
+  <p id="errCaptcha" class="error"></p>
+</section>
+
+<!-- Voting -->
+<section id="voteSection" class="hidden">
+  <h2>5. Stemmegivning</h2>
+  <input id="partySearch" placeholder="Søk etter parti..." />
+  <form id="formVote">
+    <fieldset>
+      <legend>Velg parti</legend>
+      <div id="partyList"></div>
+    </fieldset>
+    <button type="submit">Send inn stemme</button>
+  </form>
+  <p id="errVote" class="error"></p>
+</section>
+
+
+    <!-- Receipt -->
+    <section id="receiptSection" class="hidden">
+      <h2>6. Kvittering</h2>
+      <pre id="receiptCode"></pre>
+      <button id="btnReceipt">Last ned PDF</button>
+    </section>
+
+    <!-- Results -->
+    <section id="resultsSection" class="hidden">
+      <h2>7. Sanntidsresultater</h2>
+      <canvas id="resultsChart"></canvas>
+      <button id="btnConfetti">🎉 Feire!</button>
+    </section>
+
+    <!-- Security Info -->
+    <section id="infoSection">
+      <h2>Hvorfor trygt?</h2>
+      <ul>
+        <li>🔒 End-to-end kryptering</li>
+        <li>🔑 2FA (OTP + FaceID)</li>
+        <li>🛡️ CAPTCHA mot bots</li>
+        <li>⛓️ Blockchain audit-logg</li>
+        <li>📵 Personopplysninger slettes etter stemmegivning</li>
+        <li>🆔 ID- og passkontroll</li>
+        <li>🚫 Kan ikke stemme to ganger (stemmesjekk)</li>
+        <li>🌍 Geofence: kun innenfor Norge</li>
+      </ul>
+    </section>
+
+    <!-- End -->
+    <section id="thankyouSection" class="hidden">
+      <h2>Takk for din stemme! 🇳🇴</h2>
+      <p>Din stemme er registrert anonymt og sikkert.</p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Valgsystem 3.0 Ultimate</p>
+  </footer>
+
+  <script src="script2.js"></script>
+</body>
+</html>
